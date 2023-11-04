@@ -1,2 +1,2 @@
-# Algeo02-22076
+# TEMU BALIK GAMBAR
 Repository Tugas Besar 2 Algeo
