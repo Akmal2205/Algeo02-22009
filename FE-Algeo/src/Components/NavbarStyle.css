@@ -1,0 +1,41 @@
+.navbar-items{
+    display: flex;
+    background-color: #FFFFFF;
+}
+
+
+.navbar-title{
+    gap: 10px;
+    display: flex;
+    font-size:xx-large;
+    color: #263238;
+    position : relative;
+    text-decoration: none;
+    padding: 1%;
+    padding-left: 10%;
+    background-color: #FFFFFF;
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-thickness: 5px;
+    text-decoration-color: #4CAF4F;
+}
+
+.navbar-title:hover{
+    transition: 0.4s;
+    text-decoration-color: #4CAF4F;
+    color: #4CAF4F;
+}
+
+.logo:hover{
+    transform: scale(1.02);
+}
+
+.fa-regular{
+    position: relative;
+    padding: 2.8% 0px;
+}
+
+.logo{
+    height: 50px;
+    background-color: white;
+}

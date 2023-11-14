@@ -1,0 +1,33 @@
+.images-container{
+    justify-items: center;
+    align-items: center;
+    display: grid;
+    grid-template: 1fr 1fr/ 1fr 1fr 1fr;
+    height: 100%;
+}
+
+.pagination{
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    justify-self: center;
+    align-self: center;
+    background-color: white;
+}
+
+.pagination .page-num{
+    padding: 8px 15px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.page-num{
+    background-color: #4CAF4F;
+    color: white;
+}
+
+.images{
+    display: flex;
+    max-height: 200px;
+    padding: 0 2px;
+}
