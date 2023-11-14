@@ -2,7 +2,6 @@ import { useEffect, useState, useRef } from "react"
 import "./ResultPage.css"
 import Result from "./dataset.json"
 import Images from "../Components/Images"
-import { useDropzone } from 'react-dropzone'
 
 
 export const ResultPage = () => {
