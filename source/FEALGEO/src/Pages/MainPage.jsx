@@ -2,6 +2,7 @@ import Navbar from "../Components/Navbar"
 import "./MainPage.css"
 import Icon from "../assets/resolution.png"
 import { useState, useRef } from "react"
+import axios from 'axios'
 
 export const MainPage = () => {
     const [file, setFile] = useState("");
@@ -16,6 +17,25 @@ export const MainPage = () => {
     const handleSwitch = event => {
         {toggleState? setToggleState(false): setToggleState(true)}
     }
+
+    const handleUpload = async () => {
+        try {
+          const formData = new FormData();
+          formData.append('image', file);
+    
+          const response = await axios.post('http://127.0.0.1:8000/api/upload/', formData, {
+            headers: {
+              'Content-Type': 'multipart/form-data',
+            },
+          });
+    
+          console.log('Image uploaded successfully:', response.data);
+          // Handle response if needed
+        } catch (error) {
+          console.error('Error uploading image:', error);
+          // Handle errors if needed
+        }
+    };
 
     const handleChange = event => {
         console.log(event.target.files);
@@ -48,6 +68,9 @@ export const MainPage = () => {
                     </div>
                     <div className="search-button">
                         Search
+                    </div>
+                    <div className="search-button" onClick={handleUpload}>
+                        Upload
                     </div>
                 </div>
             </div>
