@@ -15,7 +15,8 @@ class ImageUploadView(APIView):
     def post(self, request):
         serializer = ImageSerializer(data=request.data)
         Images = Image.objects.all()
-        Images[0].delete()
+        if Images.exists():
+            Images[0].delete()
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=201)
