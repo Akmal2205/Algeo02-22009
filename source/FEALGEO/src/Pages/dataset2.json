@@ -1,72 +1,20 @@
 [
     {
         "id" : 1,
-        "title" : "pic-1",
-        "icon": "images/test2.jpg"
+        "persentase" : "69%",
+        "img": "images/test2.jpg",
+        "durasi": "0"
     },
     {
-        "id" : 2,
-        "title" : "pic-2",
-        "icon": "images/test2.jpg"
+        "id" : 1,
+        "persentase" : "69%",
+        "img": "images/test2.jpg",
+        "durasi": "0"
     },
     {
-        "id" : 3,
-        "title" : "pic-3",
-        "icon": "images/test2.jpg"
-    },
-    {
-        "id" : 4,
-        "title" : "pic-4",
-        "icon": "images/pic1.png"
-    },
-    {
-        "id" : 5,
-        "title" : "pic-5",
-        "icon": "images/pic1.png"
-    },
-    {
-        "id" : 6,
-        "title" : "pic-6",
-        "icon": "images/pic1.png"
-    },
-    {
-        "id" : 7,
-        "title" : "pic-7",
-        "icon": "images/test2.jpg"
-    },
-    {
-        "id" : 8,
-        "title" : "pic-8",
-        "icon": "images/test2.jpg"
-    },
-    {
-        "id" : 9,
-        "title" : "pic-9",
-        "icon": "images/test2.jpg"
-    },
-    {
-        "id" : 10,
-        "title" : "pic-10",
-        "icon": "images/test2.jpg"
-    },
-    {
-        "id" : 11,
-        "title" : "pic-11",
-        "icon": "images/test2.jpg"
-    },
-    {
-        "id" : 12,
-        "title" : "pic-12",
-        "icon": "images/test2.jpg"
-    },
-    {
-        "id" : 11,
-        "title" : "pic-11",
-        "icon": "images/test2.jpg"
-    },
-    {
-        "id" : 12,
-        "title" : "pic-12",
-        "icon": ""
+        "id" : 1,
+        "persentase" : "69%",
+        "img": "images/test2.jpg",
+        "durasi": "0"
     }
 ]
