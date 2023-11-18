@@ -27,6 +27,7 @@ export default function Images (props){
                 return (
                     <div>
                         <img src={image.icon} alt={image.title} className='images'/>
+                        <p>{image.title}</p>
                     </div>
                 );
             })}
