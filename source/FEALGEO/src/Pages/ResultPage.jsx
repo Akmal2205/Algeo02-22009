@@ -55,10 +55,10 @@ export const ResultPage = () => {
             accept="image/*"
             onChange={handleChange}
             ref={hiddenFileInput}/>
-          <p className="upload-button">Insert Dataset</p>
+          <p className="data-button">Insert Dataset</p>
         </div>
         <div className="data-button" onClick={handleUpload}>
-          <p className="upload-button">Upload Dataset</p>
+          <p className="data-button">Upload Dataset</p>
         </div>
       </div>
     </div>

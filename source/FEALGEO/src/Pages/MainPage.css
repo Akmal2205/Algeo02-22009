@@ -13,14 +13,14 @@
 
 .left{
     display: grid;
-    grid-template: 1.5fr 1.5fr 1.5fr/ 2fr 3fr 1fr;
+    grid-template: 1.5fr 0.5fr 1fr/ 2fr 3fr 1fr;
     background-color: #F5F7FA;
 }
 
 .bot-button{
     display: flex;
     justify-content: center;
-    align-self: end;
+    align-self: center;
     gap: 15px;
     grid-row: 2/3;
     grid-column: 2/3;
@@ -28,9 +28,9 @@
 }
 
 .top-button{
-    display: flex;
+    display: grid;
     gap: 15px;
-    justify-content: center;
+    justify-content: baseline;
     align-self: end;
     grid-row: 1/2;
     grid-column: 2/3;
@@ -51,6 +51,7 @@
     color: white;
     cursor: pointer;
     border-radius: 50px;
+    width: 70%;
     background-color: #4CAF4F;
     padding: 12px 24px;
     font-weight: 600;
@@ -58,6 +59,10 @@
 }
 
 .insert-button:hover{
+    background-color: #68cd6c;
+}
+
+.upload-button:hover{
     background-color: #68cd6c;
 }
 
@@ -69,9 +74,15 @@
     color: white;
     cursor: pointer;
     border-radius: 50px;
+    width: 70%;
     background-color: #4CAF4F;
-    padding: 12px 24px;
+    padding: 12px 64px;
     font-weight: 600;
+    font-size: larger;
+}
+
+.upload-tag{
+    justify-self: center;
 }
 
 .toggle-tag{

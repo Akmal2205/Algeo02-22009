@@ -61,16 +61,16 @@ export const MainPage = () => {
                                 style={{display:'none'}}
                             />
                     </div>
+                    <div className="upload-button" onClick={handleUpload}>
+                        Upload
+                    </div>
                 </div>
                 <div className="bot-button">
-                    <div className="toggle-button" onClick={handleSwitch}>
-                        {toggleState? <p className="toggle-tag">Texture</p>:<p className="toggle-tag">Colour</p>}
-                    </div>
-                    <div className="search-button">
+                <div className="search-button">
                         Search
                     </div>
-                    <div className="search-button" onClick={handleUpload}>
-                        Upload
+                    <div className="toggle-button" onClick={handleSwitch}>
+                        {toggleState? <p className="toggle-tag">Texture</p>:<p className="toggle-tag">Colour</p>}
                     </div>
                 </div>
             </div>
