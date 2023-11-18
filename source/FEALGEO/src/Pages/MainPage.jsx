@@ -12,6 +12,7 @@ import Images from "../Components/Images"
 export const MainPage = () => {
     const [colorResult, setColorResult] = useState([]);
     const [textureResult, setTextureResult] = useState([]);
+    const [search, setSearch] = useState(false);
     const [file, setFile] = useState("");
     const [fileName, setFileName] = useState("No inserted picture");
     const hiddenFileInput = useRef(null);
@@ -50,29 +51,31 @@ export const MainPage = () => {
         setFileName(event.target.files[0].name);
     };
 
-    useEffect(() => {
-        async function fetchData() {
-          try {
-            const response = await axios.get('http://127.0.0.1:8000/api/color/');
-            setColorResult(response.data);
-          } catch (error) {
-            console.error('Error fetching data:', error);
-          }
-        }
-        fetchData();
-      }, []);
+  const fetchDataColor = async () => {
+    try {
+      const response = await axios.get('http://127.0.0.1:8000/api/color/');
+      setColorResult(response.data);
+    } catch (error) {
+      console.error('Error fetching color data:', error);
+    }
+  };
 
-    useEffect(() => {
-        async function fetchData() {
-          try {
-            const response = await axios.get('http://127.0.0.1:8000/api/texture/');
-            setTextureResult(response.data);
-          } catch (error) {
-            console.error('Error fetching data:', error);
-          }
-        }
-        fetchData();
-      }, []);
+  const fetchDataTexture = async () => {
+    try {
+      const response = await axios.get('http://127.0.0.1:8000/api/texture/');
+      setTextureResult(response.data);
+    } catch (error) {
+      console.error('Error fetching texture data:', error);
+    }
+  };
+
+  const handleSearch = async () => {
+    await fetchDataColor();
+    await fetchDataTexture();
+    setSearch(true);
+    // You can perform any other logic here after fetching data
+  };
+
 
   return (
     <>
@@ -98,7 +101,7 @@ export const MainPage = () => {
                     </div>
                 </div>
                 <div className="bot-button">
-                <div className="search-button">
+                <div className="search-button" onClick={handleSearch}>
                         Search
                     </div>
                     <div className="toggle-button" onClick={handleSwitch}>
@@ -115,22 +118,22 @@ export const MainPage = () => {
         </div>
     </div>
     <div>{/* Bagian Results */}
-    {Result ? (
+    { search ? (
         toggleState ? (
-          <p className="result-tag">Result : {Object.keys(Result).length} results in 0 seconds.</p>
+          <p className="result-tag">Result : {textureResult.length} results in 0 seconds.</p>
         ) : (
           <p className="result-tag">Result : {colorResult.length} results in 0 seconds.</p>
         )
       ) : (
-        <p>Result :</p>
+        <p className="result-tag">Result :</p>
       )}
     </div>
       <div className="result-container">
-        {Result ? (
+        {search ? (
         toggleState ? (
-          <Images data = {Result}></Images>
+          <Images data = {textureResult}></Images>
         ) : (
-          <Images data = {Result2}></Images>
+          <Images data = {colorResult}></Images>
         )
       ) : (
         <p>No Images</p>

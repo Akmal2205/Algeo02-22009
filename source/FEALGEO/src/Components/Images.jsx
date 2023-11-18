@@ -26,8 +26,8 @@ export default function Images (props){
             {currentItems.map( image => {
                 return (
                     <div>
-                        <img src={image.icon} alt={image.title} className='images'/>
-                        <p>{image.title}</p>
+                        <img src={image.img} alt={image.id} key = {image.id} className='images'/>
+                        <p>{image.persentase}</p>
                     </div>
                 );
             })}
