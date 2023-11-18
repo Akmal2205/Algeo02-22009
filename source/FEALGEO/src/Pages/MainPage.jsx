@@ -11,8 +11,6 @@ export const MainPage = () => {
     const [colorResult, setColorResult] = useState([]);
     const [textureResult, setTextureResult] = useState([]);
     const [search, setSearch] = useState(false);
-    const [durationt, setDurationT] = useState(0);
-    const [durationc, setDurationC] = useState(0);
     const [file, setFile] = useState("");
     const [files, setFiles] = useState("");
     const [fileName, setFileName] = useState("No inserted picture");
@@ -106,8 +104,6 @@ export const MainPage = () => {
     await fetchDataColor();
     // await fetchDataTexture();
     setSearch(true);
-    setDurationT(Result2.slice(0,1));
-    setDurationC(colorResult.slice(0,1));
     // You can perform any other logic here after fetching data
   };
 
@@ -155,9 +151,9 @@ export const MainPage = () => {
     <div>{/* Bagian Results */}
     { search ? (
         toggleState ? (
-          <p className="result-tag">Result : {Result2.length} results in {durationt.map( res => {return(res.durasi)})} seconds.</p>
+          <p className="result-tag">Result : {Result2.length} results in {Result2[0].durasi} seconds.</p>
         ) : (
-          <p className="result-tag">Result : {colorResult.length} results in {durationc.map( res2 => {return(res2.durasi)})} seconds.</p>
+          <p className="result-tag">Result : {colorResult.length} results in {colorResult[0].durasi} seconds.</p>
         )
       ) : (
         <p className="result-tag">Result :</p>

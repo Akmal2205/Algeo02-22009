@@ -90,7 +90,7 @@ def cosine_similarity_vector(a, b):
     similarity = dot_product / (norm_a * norm_b)
     return similarity
 
-def process_dataset(input_image, dataset_folder):
+def process_color_dataset(input_image, dataset_folder):
     # Inisialisasi list untuk menyimpan hasil pencocokan
     height, width, _ = input_image.shape
     similarity_scores = []
