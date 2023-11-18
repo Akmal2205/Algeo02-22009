@@ -28,7 +28,7 @@ export default function Images (props){
                 return (
                     <div>
                         <img src={image.img} alt={image.id} key = {image.id} className='images'/>
-                        <p>{image.persentase}</p>
+                        <p>{image.persentase}%</p>
                     </div>
                 );
             })}
