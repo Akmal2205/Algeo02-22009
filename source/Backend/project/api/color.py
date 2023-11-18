@@ -1,7 +1,11 @@
 import cv2
 import numpy as np
 import os
-from api.models import Image
+import shutil
+
+
+
+
 
 
 def calculate_hsv_histogram(image):
@@ -74,7 +78,6 @@ def calculate_block_histogram(image,h,s,v,x,y,z):
             # Hitung histogram untuk blok
             block_histogram = createHistogram(block_hue, block_saturation,block_value)
             block1_histogram = createHistogram(block1_hue,block1_saturation,block1_value)
-            print(f"{block1_histogram}\n")
             similarity += cosine_similarity_vector(block_histogram, block1_histogram)
 
     similarity /= 16.0
@@ -88,11 +91,12 @@ def cosine_similarity_vector(a, b):
     return similarity
 
 def process_dataset(input_image, dataset_folder):
-    # Inisialisasi dictionary untuk menyimpan hasil pencocokan
+    # Inisialisasi list untuk menyimpan hasil pencocokan
     height, width, _ = input_image.shape
-    similarity_scores = {}
+    similarity_scores = []
 
     input_hue, input_saturation, input_value = calculate_hsv_histogram(input_image)
+    i = 1
     # Proses pencocokan dengan dataset gambar
     for filename in os.listdir(dataset_folder):
         if filename.endswith(".jpg") or filename.endswith(".png"):
@@ -104,21 +108,17 @@ def process_dataset(input_image, dataset_folder):
             dataset_hue, dataset_saturation, dataset_value = calculate_hsv_histogram(resized_image)
             similarity = calculate_block_histogram(input_image, input_hue, input_saturation, input_value, dataset_hue, dataset_saturation, dataset_value)
 
-            # Simpan hasil pencocokan dalam dictionary
-            similarity_scores[filename] = int(similarity * 100)
+            
+            # Simpan hasil pencocokan sebagai objek dalam daftar similarity_scores
+            similarity_scores.append({
+                "id": i,  # Ganti dengan ID yang sesuai
+                "persentase": similarity,  # Ganti dengan persentase kesamaan yang dihitung
+                "img": 'http://127.0.0.1:8000/media/'+filename  # Ganti dengan nama gambar yang cocok
+            })
+            i += 1
 
-    # Mengurutkan hasil pencocokan berdasarkan tingkat kemiripan
-    sorted_results = sorted(similarity_scores.items(), key=lambda x: x[1], reverse=True)
-
-    print(sorted_results,"\n")
-    # Menampilkan hasil pencocokan
-    for result in sorted_results:
-        print(f'{result[0]}: Cosine Similarity = {result[1]}')
-
-Images = Image.objects.all()
-image = Images[0]
-print(f"./media/{image}")
-input_image = cv2.imread(f'./media/{image}') 
-input_hue, input_saturation, input_value = calculate_hsv_histogram(input_image)
+    # Mengurutkan hasil pencocokan berdasarkan tingkat kemiripan (dalam list of dictionaries)
+    sorted_results = sorted(similarity_scores, key=lambda x: x['persentase'], reverse=True)
 
 
+    return sorted_results
