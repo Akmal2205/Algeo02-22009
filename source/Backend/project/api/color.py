@@ -108,15 +108,16 @@ def process_dataset(input_image, dataset_folder):
             dataset_hue, dataset_saturation, dataset_value = calculate_hsv_histogram(resized_image)
             similarity = calculate_block_histogram(input_image, input_hue, input_saturation, input_value, dataset_hue, dataset_saturation, dataset_value)
 
-            
+            similarity = similarity*100
             # Simpan hasil pencocokan sebagai objek dalam daftar similarity_scores
-            similarity_scores.append({
-                "id": i,  # Ganti dengan ID yang sesuai
-                "persentase": similarity,  # Ganti dengan persentase kesamaan yang dihitung
-                "img": 'http://127.0.0.1:8000/media/'+filename,  # Ganti dengan nama gambar yang cocok
-                "durasi": 0
-            })
-            i += 1
+            if(similarity > 60.0):
+                similarity_scores.append({
+                    "id": i,  # Ganti dengan ID yang sesuai
+                    "persentase": round(similarity,3),  # Ganti dengan persentase kesamaan yang dihitung
+                    "img": 'http://127.0.0.1:8000/media/dataset/'+filename,  # Ganti dengan nama gambar yang cocok
+                    "durasi": 0
+                })
+                i += 1
 
     # Mengurutkan hasil pencocokan berdasarkan tingkat kemiripan (dalam list of dictionaries)
     sorted_results = sorted(similarity_scores, key=lambda x: x['persentase'], reverse=True)
