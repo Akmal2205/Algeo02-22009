@@ -14,6 +14,8 @@ class ImageUploadView(APIView):
 
     def post(self, request):
         serializer = ImageSerializer(data=request.data)
+        Images = Image.objects.all()
+        Images[0].delete()
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=201)
@@ -73,7 +75,6 @@ class ColorResultView(APIView):
         input_image = cv2.imread(f'media/{image_name}')
         dataset_folder = 'media/dataset/'
         hasil = process_dataset(input_image, dataset_folder)
-        Images[0].delete()
         return Response(hasil, status=200)
 
 

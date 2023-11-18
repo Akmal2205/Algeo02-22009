@@ -10,6 +10,8 @@ import Images from "../Components/Images"
 
 
 export const MainPage = () => {
+    const [colorResult, setColorResult] = useState([]);
+    const [textureResult, setTextureResult] = useState([]);
     const [file, setFile] = useState("");
     const [fileName, setFileName] = useState("No inserted picture");
     const hiddenFileInput = useRef(null);
@@ -47,6 +49,30 @@ export const MainPage = () => {
         setFile(event.target.files[0]);
         setFileName(event.target.files[0].name);
     };
+
+    useEffect(() => {
+        async function fetchData() {
+          try {
+            const response = await axios.get('http://127.0.0.1:8000/api/color/');
+            setColorResult(response.data);
+          } catch (error) {
+            console.error('Error fetching data:', error);
+          }
+        }
+        fetchData();
+      }, []);
+
+    useEffect(() => {
+        async function fetchData() {
+          try {
+            const response = await axios.get('http://127.0.0.1:8000/api/texture/');
+            setTextureResult(response.data);
+          } catch (error) {
+            console.error('Error fetching data:', error);
+          }
+        }
+        fetchData();
+      }, []);
 
   return (
     <>
@@ -93,7 +119,7 @@ export const MainPage = () => {
         toggleState ? (
           <p className="result-tag">Result : {Object.keys(Result).length} results in 0 seconds.</p>
         ) : (
-          <p className="result-tag">Result : {Object.keys(Result2).length} results in 0 seconds.</p>
+          <p className="result-tag">Result : {colorResult.length} results in 0 seconds.</p>
         )
       ) : (
         <p>Result :</p>
