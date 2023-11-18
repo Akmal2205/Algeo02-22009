@@ -1,11 +1,6 @@
 import cv2
 import numpy as np
 import os
-import shutil
-
-
-
-
 
 
 def calculate_hsv_histogram(image):
@@ -24,6 +19,7 @@ def calculate_hsv_histogram(image):
     conditional2 = np.logical_and(maxc == G, Hue != 0)
     conditional3 = np.logical_and(maxc == R, Hue != 0)
 
+    
     Hue[conditional1] = 60.0 * (((R[conditional1] - G[conditional1]) / delta[conditional1]) + 4)
     Hue[conditional2] = 60.0 * (((B[conditional2] - R[conditional2]) / delta[conditional2]) + 2)
     Hue[conditional3] = 60.0 * (((G[conditional3] - B[conditional3]) / delta[conditional3]) % 6)

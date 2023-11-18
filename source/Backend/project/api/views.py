@@ -86,11 +86,7 @@ class ColorResultView(APIView):
 class TextureResultView(APIView):
     def get(self, request):
         Images = Image.objects.all()
-        # Mengambil objek Image pertama dari queryset
-        first_image = Images.first()
-        # Mengakses nilai dari atribut 'image' dari objek Image pertama
-        image_name = first_image.image.name
-        input_image = cv2.imread(f'media/{image_name}')
+        input_image = cv2.imread(f'media/{Images.first().image.name}')
         dataset_folder = 'media/dataset/'
         t0 = time.time()
         hasil = process_texture_dataset(input_image, dataset_folder)
