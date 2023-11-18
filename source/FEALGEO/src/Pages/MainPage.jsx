@@ -157,7 +157,7 @@ export const MainPage = () => {
         toggleState ? (
           <p className="result-tag">Result : {Result2.length} results in {durationt.map( res => {return(res.durasi)})} seconds.</p>
         ) : (
-          <p className="result-tag">Result : {colorResult.length} results in {durationc.map( res => {return(res.durasi)})} seconds.</p>
+          <p className="result-tag">Result : {colorResult.length} results in {durationc.map( res2 => {return(res2.durasi)})} seconds.</p>
         )
       ) : (
         <p className="result-tag">Result :</p>
