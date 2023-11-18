@@ -1,27 +1,27 @@
 [
     {
         "id" : 1,
-        "title" : "pic-1",
+        "title" : "80%",
         "icon": "images/test2.jpg"
     },
     {
         "id" : 2,
-        "title" : "pic-2",
+        "title" : "89%",
         "icon": "images/test2.jpg"
     },
     {
         "id" : 3,
-        "title" : "pic-3",
+        "title" : "70%",
         "icon": "images/test2.jpg"
     },
     {
         "id" : 4,
-        "title" : "pic-4",
+        "title" : "75%",
         "icon": "images/pic1.png"
     },
     {
         "id" : 5,
-        "title" : "pic-5",
+        "title" : "40%",
         "icon": "images/pic1.png"
     },
     {

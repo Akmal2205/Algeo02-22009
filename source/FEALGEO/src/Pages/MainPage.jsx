@@ -4,6 +4,10 @@ import Icon from "../assets/resolution.png"
 import { useState, useRef } from "react"
 import axios from 'axios'
 import { ResultPage } from "./ResultPage"
+import Result from "./dataset.json"
+import Result2 from "./dataset2.json"
+import Images from "../Components/Images"
+
 
 export const MainPage = () => {
     const [file, setFile] = useState("");
@@ -46,7 +50,7 @@ export const MainPage = () => {
 
   return (
     <>
-    <div className="main-container">
+    <div className="main-container">{/* Bagian Main/Search */}
         <div className="navbar">
             <Navbar></Navbar>
         </div>
@@ -84,7 +88,45 @@ export const MainPage = () => {
             </div>
         </div>
     </div>
-    <ResultPage toggle = {toggleState}></ResultPage>
+    <div>{/* Bagian Results */}
+    {Result ? (
+        toggleState ? (
+          <p className="result-tag">Result : {Object.keys(Result).length} results in 0 seconds.</p>
+        ) : (
+          <p className="result-tag">Result : {Object.keys(Result2).length} results in 0 seconds.</p>
+        )
+      ) : (
+        <p>Result :</p>
+      )}
+    </div>
+      <div className="result-container">
+        {Result ? (
+        toggleState ? (
+          <Images data = {Result}></Images>
+        ) : (
+          <Images data = {Result2}></Images>
+        )
+      ) : (
+        <p>No Images</p>
+      )}
+      <div className="result-button-section">
+        <div className="data-button" onClick={handleClick}>
+          <input hidden 
+            multiple
+            type="file" 
+            id = "ctrl"
+            webkitdirectory = ""
+            directory=""
+            accept="image/*"
+            onChange={handleChange}
+            ref={hiddenFileInput}/>
+          <p className="data-button">Insert Dataset</p>
+        </div>
+        <div className="data-button" onClick={handleUpload}>
+          <p className="data-button">Upload Dataset</p>
+        </div>
+      </div>
+    </div>
     </>
   )
 }

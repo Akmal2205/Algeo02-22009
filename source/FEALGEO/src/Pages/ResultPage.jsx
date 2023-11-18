@@ -6,8 +6,9 @@ import Images from "../Components/Images"
 import axios from "axios"
 
 
-export const ResultPage = (props) => {
+export const ResultPage = (props, props2) => {
   const { toggle } = props;
+  const { Res1 } = props2;
   const [files, setFiles] = useState("");
   const [fileLength, setFileLength] = useState("");
   const hiddenFileInput = useRef(null);
