@@ -6,7 +6,6 @@ import axios from 'axios'
 import { ResultPage } from "./ResultPage"
 import Result from "./dataset.json"
 import Result2 from "./dataset2.json"
-import Images from "../Components/Images"
 
 
 export const MainPage = () => {
@@ -16,10 +15,15 @@ export const MainPage = () => {
     const [file, setFile] = useState("");
     const [fileName, setFileName] = useState("No inserted picture");
     const hiddenFileInput = useRef(null);
+    const hiddenFileInput2 = useRef(null);
     const [toggleState, setToggleState] = useState(false);
 
     const handleClick = event => {
         hiddenFileInput.current.click();
+    }
+
+    const handleClick2 = event => {
+      hiddenFileInput2.current.click();
     }
 
     const handleSwitch = event => {
@@ -45,11 +49,38 @@ export const MainPage = () => {
         }
     };
 
+    const handleUpload2 = async () => {
+      try {
+        const formData = new FormData();
+        for (let i = 0; i < files.length; i++) {
+          formData.append('files', files[i]);
+        }
+  
+        const response = await axios.post('http://localhost:8000/api/upload_folder/', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        });
+  
+        console.log('Files uploaded successfully:', response.data);
+        // Handle response if needed
+      } catch (error) {
+        console.error('Error uploading files:', error);
+        // Handle errors if needed
+      }
+    };
+
     const handleChange = event => {
         console.log(event.target.files);
         setFile(event.target.files[0]);
         setFileName(event.target.files[0].name);
     };
+
+    const handleChange2 = event => {
+      console.log(event.target.files);
+      setFiles(event.target.files);
+  };
+  
 
   const fetchDataColor = async () => {
     try {
@@ -139,7 +170,7 @@ export const MainPage = () => {
         <p>No Images</p>
       )}
       <div className="result-button-section">
-        <div className="data-button" onClick={handleClick}>
+        <div className="data-button" onClick={handleClick2}>
           <input hidden 
             multiple
             type="file" 
@@ -147,11 +178,11 @@ export const MainPage = () => {
             webkitdirectory = ""
             directory=""
             accept="image/*"
-            onChange={handleChange}
-            ref={hiddenFileInput}/>
+            onChange={handleChange2}
+            ref={hiddenFileInput2}/>
           <p className="data-button">Insert Dataset</p>
         </div>
-        <div className="data-button" onClick={handleUpload}>
+        <div className="data-button" onClick={handleUpload2}>
           <p className="data-button">Upload Dataset</p>
         </div>
       </div>
