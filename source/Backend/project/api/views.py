@@ -4,7 +4,7 @@ from rest_framework.parsers import MultiPartParser, FormParser
 from .serializers import ImageSerializer
 from .models import Image
 from .color import process_dataset
-import cv2, os, shutil
+import cv2, os, shutil, time
 
 
 
@@ -47,7 +47,7 @@ class MultipleFileUploadView(APIView):
     
     def get(self, request):
         # Path to the 'media' directory where the files were saved
-        media_directory = 'media/'
+        media_directory = 'media/dataset'
         similarity_scores = []
         i = 1
         for filename in os.listdir(media_directory):
@@ -74,7 +74,11 @@ class ColorResultView(APIView):
         image_name = first_image.image.name
         input_image = cv2.imread(f'media/{image_name}')
         dataset_folder = 'media/dataset/'
+        t0 = time.time()
         hasil = process_dataset(input_image, dataset_folder)
+        t1 = time.time()
+        exec = t1-t0
+        hasil[0]['durasi'] = exec
         return Response(hasil, status=200)
 
 
