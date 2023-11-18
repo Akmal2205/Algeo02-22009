@@ -1,11 +1,7 @@
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework.parsers import MultiPartParser, FormParser
-from .serializers import ImageSerializer
-from .models import Image
 import cv2
 import numpy as np
 import os
+from api.models import Image
 
 
 def calculate_hsv_histogram(image):
@@ -119,77 +115,10 @@ def process_dataset(input_image, dataset_folder):
     for result in sorted_results:
         print(f'{result[0]}: Cosine Similarity = {result[1]}')
 
-# Images = Image.objects.all()
-# image = Images[0]
-# print(f"./media/{image}")
-# input_image = cv2.imread(f'./media/{image}') 
-# input_hue, input_saturation, input_value = calculate_hsv_histogram(input_image)
-
-
-
-class ImageUploadView(APIView):
-    parser_classes = (MultiPartParser, FormParser)
-
-    def post(self, request):
-        serializer = ImageSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=201)
-        return Response(serializer.errors, status=400)
-    
-    def get(self, request):
-        Images = Image.objects.all()
-        serializer = ImageSerializer(Images, many=True)
-        return Response(serializer.data)
-    
-
-
-class MultipleFileUploadView(APIView):
-    parser_classes = (MultiPartParser,)
-
-    def post(self, request):
-        files = request.FILES.getlist('files')
-
-        # Process and save each file
-        for uploaded_file in files:
-            # Your file handling logic here (validation, saving to storage, etc.)
-            # Example: Save file to a specific directory
-            with open(f'media/{uploaded_file.name}', 'wb+') as destination:
-                for chunk in uploaded_file.chunks():
-                    destination.write(chunk)
-
-        return Response({'message': 'Files uploaded successfully'}, status=201)
-    
-    def get(self, request):
-        # Path to the 'media' directory where the files were saved
-        media_directory = 'media/'
-        similarity_scores = []
-        i = 1
-        for filename in os.listdir(media_directory):
-            if filename.endswith(".jpg") or filename.endswith(".png"):
-            # List all files in the 'media' directory
-                similarity_scores.append({
-                    "id": i,  # Replace with the appropriate id
-                    "persentase": 80,  # Replace with the calculated similarity percentage
-                    "img": filename  # Replace with the matched image name
-                })
-                i = i+1
-                os.remove(os.path.join(media_directory, filename))
-            
-
-        return Response(similarity_scores, status=200)
-
-
-class ColorResultView(APIView):
-    def get(self, request):
-        Images = Image.objects.all()
-        # Mengambil objek Image pertama dari queryset
-        first_image = Images.first()
-        
-        # Mengakses nilai dari atribut 'image' dari objek Image pertama
-        image_name = first_image.image.name
-
-        # Lakukan operasi lain dengan image_name...
-        input_image = cv2.imread(f'media/{image_name}')
+Images = Image.objects.all()
+image = Images[0]
+print(f"./media/{image}")
+input_image = cv2.imread(f'./media/{image}') 
+input_hue, input_saturation, input_value = calculate_hsv_histogram(input_image)
 
 
