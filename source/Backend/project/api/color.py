@@ -113,7 +113,8 @@ def process_dataset(input_image, dataset_folder):
             similarity_scores.append({
                 "id": i,  # Ganti dengan ID yang sesuai
                 "persentase": similarity,  # Ganti dengan persentase kesamaan yang dihitung
-                "img": 'http://127.0.0.1:8000/media/'+filename  # Ganti dengan nama gambar yang cocok
+                "img": 'http://127.0.0.1:8000/media/'+filename,  # Ganti dengan nama gambar yang cocok
+                "durasi": 0
             })
             i += 1
 
