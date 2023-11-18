@@ -13,13 +13,13 @@
 
 .left{
     display: grid;
-    grid-template: 1.5fr 0.5fr 1fr/ 2fr 3fr 1fr;
+    grid-template: 1.5fr 0.5fr 1fr/ 2fr 320px 1fr;
     background-color: #F5F7FA;
 }
 
 .bot-button{
     display: flex;
-    justify-content: center;
+    justify-content: baseline;
     align-self: center;
     gap: 15px;
     grid-row: 2/3;
@@ -76,7 +76,7 @@
     border-radius: 50px;
     width: 70%;
     background-color: #4CAF4F;
-    padding: 12px 64px;
+    padding: 12px 72px;
     font-weight: 600;
     font-size: larger;
 }
