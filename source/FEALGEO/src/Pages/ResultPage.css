@@ -3,7 +3,7 @@
     grid-template-rows: 3fr 1fr;
     background-color: white;
     height: 100vh;
-    padding: 50px;
+    padding: 30px 50px;
 }
 
 .pics-container{
@@ -45,4 +45,11 @@
     padding: 12px 56px;
     font-weight: 600;
     font-size: larger;
+}
+
+.result-tag{
+    background-color: white;
+    padding-top: 10px;
+    padding-left: 50px;
+    color: #4CAF4F;
 }

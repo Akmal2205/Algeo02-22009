@@ -7,6 +7,7 @@ import axios from "axios"
 
 export const ResultPage = () => {
   const [files, setFiles] = useState("");
+  const [fileLength, setFileLength] = useState("");
   const hiddenFileInput = useRef(null);
 
   const handleClick = event => {
@@ -16,6 +17,7 @@ export const ResultPage = () => {
   const handleChange = event => {
     console.log(event.target.files);
     setFiles(event.target.files);
+    setFileLength(Result);
 };
 
   // handle upload dataset api
@@ -42,7 +44,11 @@ export const ResultPage = () => {
   
 
   return (
-    <div className="result-container">
+    <>
+    <div>
+    {Result? <p className="result-tag">Result : {Object.keys(Result).length} results in 0 seconds.</p>: <p>Result :</p>}
+    </div>
+      <div className="result-container">
         {Result? <Images data = {Result}></Images>: <p>No Images</p>}
       <div className="result-button-section">
         <div className="data-button" onClick={handleClick}>
@@ -62,5 +68,6 @@ export const ResultPage = () => {
         </div>
       </div>
     </div>
+    </>
   )
 }
