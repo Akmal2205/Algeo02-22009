@@ -13,6 +13,7 @@ export const MainPage = () => {
     const [textureResult, setTextureResult] = useState([]);
     const [search, setSearch] = useState(false);
     const [file, setFile] = useState("");
+    const [files, setFiles] = useState("");
     const [fileName, setFileName] = useState("No inserted picture");
     const hiddenFileInput = useRef(null);
     const hiddenFileInput2 = useRef(null);
