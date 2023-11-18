@@ -19,6 +19,7 @@ export default function Images (props){
         const newOffset = (event.selected * itemsPerPage) % data.length;
         setItemOffset(newOffset);
     }
+ 
 
   return (
     <>
