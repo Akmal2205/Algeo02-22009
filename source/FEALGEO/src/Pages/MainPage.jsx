@@ -3,7 +3,6 @@ import "./MainPage.css"
 import Icon from "../assets/resolution.png"
 import { useState, useRef } from "react"
 import axios from 'axios'
-import Result2 from "./dataset2.json"
 import Images from "../Components/Images"
 
 
@@ -91,18 +90,18 @@ export const MainPage = () => {
     }
   };
 
-  // const fetchDataTexture = async () => {
-  //   try {
-  //     const response = await axios.get('http://127.0.0.1:8000/api/texture/');
-  //     setTextureResult(response.data);
-  //   } catch (error) {
-  //     console.error('Error fetching texture data:', error);
-  //   }
-  // };
+  const fetchDataTexture = async () => {
+    try {
+      const response = await axios.get('http://127.0.0.1:8000/api/texture/');
+      setTextureResult(response.data);
+    } catch (error) {
+      console.error('Error fetching texture data:', error);
+    }
+  };
 
   const handleSearch = async () => {
     await fetchDataColor();
-    // await fetchDataTexture();
+    await fetchDataTexture();
     setSearch(true);
     // You can perform any other logic here after fetching data
   };
@@ -151,7 +150,7 @@ export const MainPage = () => {
     <div>{/* Bagian Results */}
     { search ? (
         toggleState ? (
-          <p className="result-tag">Result : {Result2.length} results in {Result2[0].durasi} seconds.</p>
+          <p className="result-tag">Result : {textureResult.length} results in {textureResult[0].durasi} seconds.</p>
         ) : (
           <p className="result-tag">Result : {colorResult.length} results in {colorResult[0].durasi} seconds.</p>
         )
@@ -162,7 +161,7 @@ export const MainPage = () => {
       <div className="result-container">
         {search ? (
         toggleState ? (
-          <Images data = {Result2}></Images>
+          <Images data = {textureResult}></Images>
         ) : (
           <Images data = {colorResult}></Images>
         )
