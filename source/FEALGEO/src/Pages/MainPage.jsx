@@ -3,6 +3,7 @@ import "./MainPage.css"
 import Icon from "../assets/resolution.png"
 import { useState, useRef } from "react"
 import axios from 'axios'
+import { ResultPage } from "./ResultPage"
 
 export const MainPage = () => {
     const [file, setFile] = useState("");
@@ -44,6 +45,7 @@ export const MainPage = () => {
     };
 
   return (
+    <>
     <div className="main-container">
         <div className="navbar">
             <Navbar></Navbar>
@@ -82,5 +84,7 @@ export const MainPage = () => {
             </div>
         </div>
     </div>
+    <ResultPage toggle = {toggleState}></ResultPage>
+    </>
   )
 }
