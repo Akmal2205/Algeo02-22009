@@ -1,5 +1,5 @@
-# Project Name
-> Outline a brief description of your project.
+# Content Based Image Retrieval (Reverse Search Image)
+> Program untuk mencari gambar dari sebuah dataset berdasarkan persentase kemiripannya melalui metode perbandingan warna dan perbandingan tekstur.
 > Live demo [_here_](https://www.example.com). <!-- If you have the project hosted somewhere, include the link here. -->
 
 ## Table of Contents
@@ -17,24 +17,23 @@
 
 
 ## General Information
-- Provide general information about your project here.
-- What problem does it (intend to) solve?
-- What is the purpose of your project?
-- Why did you undertake it?
+- Projek ini mencari tingkat kemiripan suatu gambar referensi dengan gambar lain dalam jumlah banyak.
+- Projek ini diharapkan menyelesaikan masalah-masalah yang biasa dihadapi dengan gambar yang berada di Internet, seperti copyright gambar, mencari asal gambar, dll.
+- Projek ini bertujuan untuk mencari apabila ada gambar referensi dari dataset gambar yang diberikan.
 <!-- You don't have to answer all the questions - just the ones relevant to your project. -->
 
 
 ## Technologies Used
-- Tech 1 - version 1.0
-- Tech 2 - version 2.0
-- Tech 3 - version 3.0
+- Reactjs - version 18
+- Django - version 4.2.7
+- Python - version 3.12
 
 
 ## Features
 List the ready features here:
-- Awesome feature 1
-- Awesome feature 2
-- Awesome feature 3
+- Main page; insert-upload reference image, insert-upload image dataset, display reference image, display dataset image.
+- About Us Page; kontribusi masing-masing anggota, identitas singkat masing-masing anggota.
+- How to Use; instruksi penggunaan program.
 
 
 ## Screenshots
