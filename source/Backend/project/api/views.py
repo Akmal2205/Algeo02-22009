@@ -37,10 +37,9 @@ class MultipleFileUploadView(APIView):
         files = request.FILES.getlist('files')
         shutil.rmtree('media/dataset/')
         os.makedirs('media/dataset/')
-        # Process and save each file
+
+        # simpan setiap file
         for uploaded_file in files:
-            # Your file handling logic here (validation, saving to storage, etc.)
-            # Example: Save file to a specific directory
             with open(f'media/dataset/{uploaded_file.name}', 'wb+') as destination:
                 for chunk in uploaded_file.chunks():
                     destination.write(chunk)
@@ -48,17 +47,15 @@ class MultipleFileUploadView(APIView):
         return Response({'message': 'Files uploaded successfully'}, status=201)
     
     def get(self, request):
-        # Path to the 'media' directory where the files were saved
         media_directory = 'media/dataset'
         similarity_scores = []
         i = 1
         for filename in os.listdir(media_directory):
             if filename.endswith(".jpg") or filename.endswith(".png"):
-            # List all files in the 'media' directory
                 similarity_scores.append({
-                    "id": i,  # Replace with the appropriate id
-                    "persentase": 80,  # Replace with the calculated similarity percentage
-                    "img": filename  # Replace with the matched image name
+                    "id": i,  
+                    "persentase": 80,  # dummy element
+                    "img": filename  
                 })
                 i = i+1
 
@@ -80,7 +77,7 @@ class ColorResultView(APIView):
         hasil = process_color_dataset(input_image, dataset_folder)
         t1 = time.time()
         exec = t1-t0
-        hasil[0]['durasi'] = round(exec,3)
+        hasil[0]['durasi'] = round(exec,3) # menyimpan excecution time di dictionary durasi di elemen pertama
         return Response(hasil, status=200)
     
 class TextureResultView(APIView):
@@ -92,7 +89,7 @@ class TextureResultView(APIView):
         hasil = process_texture_dataset(input_image, dataset_folder)
         t1 = time.time()
         exec = t1-t0
-        hasil[0]['durasi'] = round(exec,3)
+        hasil[0]['durasi'] = round(exec,3) # menyimpan excecution time di dictionary durasi di elemen pertama
         return Response(hasil, status=200)
 
 

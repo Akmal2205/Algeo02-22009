@@ -40,6 +40,7 @@ def createHistogram(h,s,v):
     hist_saturation, _ = np.histogram(s.flatten(), bins=16, range=(0, 1))
     hist_value, _ = np.histogram(v.flatten(), bins=16, range=(0, 1))
 
+    #normalisasi Histogram
     if np.linalg.norm(hist_hue) != 0:
         hist_hue = hist_hue / np.linalg.norm(hist_hue)
 
@@ -55,7 +56,7 @@ def createHistogram(h,s,v):
     return histogram
 
 def calculate_block_histogram(image,h,s,v,x,y,z):
-    # Mendapatkan dimensi gambar
+    # Mendapatkan dimensi atau ukuran gambar
     height, width, _ = image.shape
 
     similarity = 0
@@ -64,14 +65,14 @@ def calculate_block_histogram(image,h,s,v,x,y,z):
 
     for i in range(0, 4):
         for j in range(0, 4):
-            # Memotong blok dari gambar
+            # Memotong blok dari gambar yang sudah diubah ke HSV
             block_hue = h[i*height:(i+1)*height, j*width:(j+1)*width]
             block1_hue = x[i*height:(i+1)*height, j*width:(j+1)*width]
             block_saturation = s[i*height:(i+1)*height, j*width:(j+1)*width]
             block1_saturation = y[i*height:(i+1)*height, j*width:(j+1)*width]
             block_value = v[i*height:(i+1)*height, j*width:(j+1)*width]
             block1_value = z[i*height:(i+1)*height, j*width:(j+1)*width]
-            # Hitung histogram untuk blok
+            # Hitung histogram tiap blok
             block_histogram = createHistogram(block_hue, block_saturation,block_value)
             block1_histogram = createHistogram(block1_hue,block1_saturation,block1_value)
             similarity += cosine_similarity_vector(block_histogram, block1_histogram)
@@ -79,6 +80,7 @@ def calculate_block_histogram(image,h,s,v,x,y,z):
     similarity /= 16.0
 
     return similarity
+
 def cosine_similarity_vector(a, b):
     dot_product = np.dot(a, b)
     norm_a = np.linalg.norm(a)
@@ -87,8 +89,9 @@ def cosine_similarity_vector(a, b):
     return similarity
 
 def process_color_dataset(input_image, dataset_folder):
-    # Inisialisasi list untuk menyimpan hasil pencocokan
+    #vMendapatkan ukuran atau size dari input image
     height, width, _ = input_image.shape
+    # Inisialisasi list untuk menyimpan hasil pencocokan
     similarity_scores = []
 
     input_hue, input_saturation, input_value = calculate_hsv_histogram(input_image)
@@ -98,24 +101,28 @@ def process_color_dataset(input_image, dataset_folder):
         if filename.endswith(".jpg") or filename.endswith(".png"):
             dataset_image_path = os.path.join(dataset_folder, filename)
             dataset_image = cv2.imread(dataset_image_path)
-            # Resize gambar "image1.jpg" agar sesuai dengan ukuran gambar input
+
+            # Resize(sesuaikan) gambar dataset agar sesuai dengan ukuran gambar input
             resized_image = cv2.resize(dataset_image, (width, height))
 
+            # Mendapatkan HSV dataset
             dataset_hue, dataset_saturation, dataset_value = calculate_hsv_histogram(resized_image)
+            # Memproses nilai cosine_similarity per bok (4x4) lalu dirata2 dengan 16
             similarity = calculate_block_histogram(input_image, input_hue, input_saturation, input_value, dataset_hue, dataset_saturation, dataset_value)
 
+            #Dihitung presentase
             similarity = similarity*100
-            # Simpan hasil pencocokan sebagai objek dalam daftar similarity_scores
+            # Simpan hasil pencocokan sebagai dictionary dalam endpoint
             if(similarity > 60.0):
                 similarity_scores.append({
-                    "id": i,  # Ganti dengan ID yang sesuai
-                    "persentase": round(similarity,3),  # Ganti dengan persentase kesamaan yang dihitung
-                    "img": 'http://127.0.0.1:8000/media/dataset/'+filename,  # Ganti dengan nama gambar yang cocok
-                    "durasi": 0
+                    "id": i,  
+                    "persentase": round(similarity,3),  # di bulatkan 3 angka dibelakang koma
+                    "img": 'http://127.0.0.1:8000/media/dataset/'+filename,  # menyimpan img dalam link static URL
+                    "durasi": 0  #nilai durasi di default ke-0
                 })
                 i += 1
 
-    # Mengurutkan hasil pencocokan berdasarkan tingkat kemiripan (dalam list of dictionaries)
+    # Mengurutkan hasil 
     sorted_results = sorted(similarity_scores, key=lambda x: x['persentase'], reverse=True)
 
 

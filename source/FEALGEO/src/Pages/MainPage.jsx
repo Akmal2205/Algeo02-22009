@@ -40,10 +40,10 @@ export const MainPage = () => {
             },
           });
     
-          console.log('Image uploaded successfully:', response.data);
+          console.log('Mantap Jiwa!!!', response.data);
           // Handle response if needed
         } catch (error) {
-          console.error('Error uploading image:', error);
+          console.error('Ngapain dek?', error);
           // Handle errors if needed
         }
     };
@@ -61,11 +61,10 @@ export const MainPage = () => {
           },
         });
   
-        console.log('Files uploaded successfully:', response.data);
-        // Handle response if needed
+        console.log('Mantap Jiwa!!!:', response.data);
+
       } catch (error) {
-        console.error('Error uploading files:', error);
-        // Handle errors if needed
+        console.error('Ngapain dek?', error);
       }
     };
 
@@ -86,7 +85,7 @@ export const MainPage = () => {
       const response = await axios.get('http://127.0.0.1:8000/api/color/');
       setColorResult(response.data);
     } catch (error) {
-      console.error('Error fetching color data:', error);
+      console.error('Ngapain dek?', error);
     }
   };
 
@@ -95,7 +94,7 @@ export const MainPage = () => {
       const response = await axios.get('http://127.0.0.1:8000/api/texture/');
       setTextureResult(response.data);
     } catch (error) {
-      console.error('Error fetching texture data:', error);
+      console.error('Ngapain dek?', error);
     }
   };
 
@@ -103,7 +102,6 @@ export const MainPage = () => {
     await fetchDataColor();
     await fetchDataTexture();
     setSearch(true);
-    // You can perform any other logic here after fetching data
   };
 
 

@@ -90,21 +90,21 @@ def compare_images(image1, image2) :
     return result*100
 
 def process_texture_dataset(input_image, dataset_folder):
-    # Inisialisasi dictionary untuk menyimpan hasil pencocokan
+    
     grayscale1 = image_to_grayscale(input_image)
     # hitung cooccurrence matrix
     comatrix1 = calculate_cooccurrence_matrix(grayscale1)
-
-
-    # mendapatkan nilai contrast, homogeneity, dan entropy dari image
+    # mendapatkan nilai contrast, homogeneity, dan entropy dari input_image
     contrast1 = get_contrast(comatrix1)
     homogeneity1 = get_homogeneity(comatrix1)
     entropy1 = get_entropy(comatrix1)
 
     vectorA = np.array([contrast1,homogeneity1,entropy1])
-
     magnitude_of_A = np.linalg.norm(vectorA)
+
+    # Inisialisasi list untuk menyimpan hasil pencocokan
     similarity_scores = []
+
     # Proses pencocokan dengan dataset gambar
     i = 0
     for filename in os.listdir(dataset_folder):
@@ -113,28 +113,30 @@ def process_texture_dataset(input_image, dataset_folder):
             dataset_image = cv2.imread(dataset_image_path)
 
             grayscale2 = image_to_grayscale(dataset_image)
+            # mendapatkan nilai contrast, homogeneity, dan entropy dari dataset
             comatrix2 = calculate_cooccurrence_matrix(grayscale2)
             contrast2 = get_contrast(comatrix2)
             homogeneity2 = get_homogeneity(comatrix2)
             entropy2 = get_entropy(comatrix2)
 
             vectorB = np.array([contrast2,homogeneity2,entropy2])
-
             magnitude_of_B = np.linalg.norm(vectorB)
 
+
             result = np.dot(vectorA,vectorB)/(magnitude_of_A*magnitude_of_B)
-            result = result*100
-            # Simpan hasil pencocokan sebagai objek dalam daftar similarity_scores
+            result = result*100 #Dihitung presentase
+
+            # Simpan hasil pencocokan sebagai dictionary untuk endpoint
             if(result > 60.0):
                 similarity_scores.append({
-                    "id": i,  # Ganti dengan ID yang sesuai
-                    "persentase": round(result,3),  # Ganti dengan persentase kesamaan yang dihitung
-                    "img": 'http://127.0.0.1:8000/media/dataset/'+filename,  # Ganti dengan nama gambar yang cocok
-                    "durasi": 0
+                    "id": i,  
+                    "persentase": round(result,3),  # di bulatkan 3 angka dibelakang koma
+                    "img": 'http://127.0.0.1:8000/media/dataset/'+filename,  # menyimpan img dalam link static URL
+                    "durasi": 0  #nilai durasi di default ke-0
                 })
                 i += 1
 
-    # Mengurutkan hasil pencocokan berdasarkan tingkat kemiripan (dalam list of dictionaries)
+    # Mengurutkan hasil 
     sorted_results = sorted(similarity_scores, key=lambda x: x['persentase'], reverse=True)
 
 

@@ -23,7 +23,7 @@ export const ResultPage = (props, props2) => {
     setFileLength(Result);
 };
 
-  // handle upload dataset api
+
   const handleUpload = async () => {
     try {
       const formData = new FormData();
@@ -37,11 +37,9 @@ export const ResultPage = (props, props2) => {
         },
       });
 
-      console.log('Files uploaded successfully:', response.data);
-      // Handle response if needed
+      console.log('Mantap Jiwa!!!', response.data);
     } catch (error) {
-      console.error('Error uploading files:', error);
-      // Handle errors if needed
+      console.error('Ngapain dek?', error);
     }
   };
   
