@@ -1,6 +1,5 @@
 # Content Based Image Retrieval (Reverse Search Image)
 > Program untuk mencari gambar dari sebuah dataset berdasarkan persentase kemiripannya melalui metode perbandingan warna dan perbandingan tekstur.
-> Live demo [_here_](https://www.example.com). <!-- If you have the project hosted somewhere, include the link here. -->
 
 ## Table of Contents
 * [General Info](#general-information)
