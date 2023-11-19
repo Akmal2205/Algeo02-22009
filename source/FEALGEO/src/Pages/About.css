@@ -1,0 +1,39 @@
+.about-container{
+    display: grid;
+    grid-template: 1fr 7fr 1fr/ 1fr 9fr 1fr;
+    height: 89.5vh;
+}
+
+.bio-container{
+    grid-row: 2/3;
+    grid-column: 2/3;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.bio {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.pp {
+    max-height: 300px;
+    border-radius: 100%;
+    border-style: double;
+    border-width: 10px;
+    border-color: #4CAF4F;
+}
+
+.desc {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.nama{
+    text-decoration: none;
+    color: black;
+}

@@ -109,7 +109,6 @@ export const MainPage = () => {
     <>
     <div className="main-container">{/* Bagian Main/Search */}
         <div className="navbar">
-            <Navbar></Navbar>
         </div>
         <div className="content-container">
             <div className="left">
