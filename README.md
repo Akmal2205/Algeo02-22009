@@ -37,7 +37,7 @@ List the ready features here:
 
 
 ## Screenshots
-Color Results
+### Color Results
 ![Screenshot 2023-11-19 122149](https://github.com/Akmal2205/Algeo02-22009/assets/118907510/93008701-e7c3-44b0-b825-75ad19f71b60)
 ![Screenshot 2023-11-19 122202](https://github.com/Akmal2205/Algeo02-22009/assets/118907510/37b2f910-0b76-43c0-82d0-15d39a0e974c)
 
