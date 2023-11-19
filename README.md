@@ -21,7 +21,7 @@
 <!-- You don't have to answer all the questions - just the ones relevant to your project. -->
 
 
-## Technologies Used
+## Tech Stacks
 - Reactjs - version 18
 - Django - version 4.2.7
 - Python - version 3.12
