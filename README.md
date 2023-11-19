@@ -18,7 +18,6 @@
 ## General Information
 - Projek ini mencari tingkat kemiripan suatu gambar referensi dengan gambar lain dalam jumlah banyak.
 - Projek ini diharapkan menyelesaikan masalah-masalah yang biasa dihadapi dengan gambar yang berada di Internet, seperti copyright gambar, mencari asal gambar, dll.
-- Projek ini bertujuan untuk mencari apabila ada gambar referensi dari dataset gambar yang diberikan.
 <!-- You don't have to answer all the questions - just the ones relevant to your project. -->
 
 
@@ -29,18 +28,21 @@
 
 
 ## Features
-List the ready features here:
+Fitur per Page:
 - Main page; insert-upload reference image, insert-upload image dataset, display reference image, display dataset image.
 - About Us Page; kontribusi masing-masing anggota, identitas singkat masing-masing anggota.
 - How to Use; instruksi penggunaan program.
 
 
 ## Screenshots
-### Color Results
+### Web View
 ![Screenshot 2023-11-19 215612](https://github.com/Akmal2205/Algeo02-22009/assets/118907510/c57d875b-69f6-4082-a140-fb5e7d47f6ed)
+### Color Results
 ![Screenshot 2023-11-19 122149](https://github.com/Akmal2205/Algeo02-22009/assets/118907510/93008701-e7c3-44b0-b825-75ad19f71b60)
 ![Screenshot 2023-11-19 122202](https://github.com/Akmal2205/Algeo02-22009/assets/118907510/37b2f910-0b76-43c0-82d0-15d39a0e974c)
 ### Texture Results
+![Screenshot 2023-11-19 122657](https://github.com/Akmal2205/Algeo02-22009/assets/118907510/7a553842-6964-40f8-89e0-9eb6ac1309ee)
+![Screenshot 2023-11-19 122800](https://github.com/Akmal2205/Algeo02-22009/assets/118907510/e4c76aa2-0238-4a8e-be80-61620673ed89)
 <!-- If you have screenshots you'd like to share, include them here. -->
 
 
@@ -70,6 +72,7 @@ Room for improvement:
 
 To do:
 - Tampilan loading
+
 
 ## Contact
 Created by (cupski) Muhammad Yusuf Rafi/13522009, (fabianradenta) Fabian Radenta Bangun/13522105, (Akmal2205) Muhammad Syarafi Akmal/13522076.
