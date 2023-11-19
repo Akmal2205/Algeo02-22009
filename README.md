@@ -11,7 +11,6 @@
 * [Usage](#usage)
 * [Project Status](#project-status)
 * [Room for Improvement](#room-for-improvement)
-* [Acknowledgements](#acknowledgements)
 * [Contact](#contact)
 <!-- * [License](#license) -->
 
@@ -46,43 +45,34 @@ List the ready features here:
 
 
 ## Setup
-What are the project requirements/dependencies? Where are they listed? A requirements.txt or a Pipfile.lock file perhaps? Where is it located?
-
-Proceed to describe how to install / setup one's local environment / get started with the project.
+1. Python latest version
+2. Django latest version
+3. npm latest version
 
 
 ## Usage
-How does one go about using it?
-Provide various use cases and code examples here.
-
-`write-your-code-here`
+1. git clone https://github.com/Akmal2205/Algeo02-22009
+2. Buka folder tersebut dalam vscode (buka terminal di folder lalu ketik 'code . '.
+3. Lalu buka terminal baru dengan 'ctrl + shift + ~' , lalu ketik 'cd Backend', lalu ketik 'cd project', lalu ketik 'pip install django --user', lalu ketik 'python manage.py runserver'.
+4. Lalu buka terminal baru lagi, lalu ketik 'cd FEALGEO', lalu ketik 'npm i', lalu ketik 'npm create vite@latest', lalu ketik 'npm run dev', akan muncul sebuah link local host yang dapat dibuka di browser.
 
 
 ## Project Status
-Project is: _in progress_ / _complete_ / _no longer being worked on_. If you are no longer working on it, provide reasons why.
+Project ini : Selesai.
 
 
 ## Room for Improvement
-Include areas you believe need improvement / could be improved. Also add TODOs for future development.
+1. Menangani kasus-kasus frontend website yang tak tertutupi seperti saat loading saat melakukan search, membuat frontend dengan lebih terstruktur.
 
 Room for improvement:
-- Improvement to be done 1
-- Improvement to be done 2
+- Menangani kasus-kasus frontend website yang tak tertutupi seperti saat loading saat melakukan search.
+- Membuat frontend dengan lebih terstruktur.
 
 To do:
-- Feature to be added 1
-- Feature to be added 2
-
-
-## Acknowledgements
-Give credit here.
-- This project was inspired by...
-- This project was based on [this tutorial](https://www.example.com).
-- Many thanks to...
-
+- Tampilan loading
 
 ## Contact
-Created by [@flynerdpl](https://www.flynerd.pl/) - feel free to contact me!
+Created by (cupski) Muhammad Yusuf Rafi/13522009, (fabianradenta) Fabian Radenta Bangun/13522105, (Akmal2205) Muhammad Syarafi Akmal/13522076.
 
 
 <!-- Optional -->
