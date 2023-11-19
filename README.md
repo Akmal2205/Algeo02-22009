@@ -37,7 +37,7 @@ List the ready features here:
 
 
 ## Screenshots
-![alt text](https://github.com/Akmal2205/Algeo02-22009/blob/main/image/color_result/Screenshot 2023-11-19 122149.png?raw=true)
+![0](https://github.com/Akmal2205/Algeo02-22009/assets/118907510/3d39341a-f460-4ef1-b50f-991e5c6016e1)
 <!-- If you have screenshots you'd like to share, include them here. -->
 
 
