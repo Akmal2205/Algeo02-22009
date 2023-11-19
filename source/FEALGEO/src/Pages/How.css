@@ -1,0 +1,19 @@
+.how-container{
+    height: 89.5vh;
+    display: grid;
+    grid-template: 1fr 7fr 1fr/ 1fr 9fr 1fr;
+}
+
+.instruction-container{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    grid-row: 2/3;
+    grid-column: 2/3;
+    gap: 20px;
+    background-color: white;
+}
+
+.teks{
+    background-color: white;
+}
