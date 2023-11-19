@@ -1,4 +1,4 @@
-# Content Based Image Retrieval (Reverse Search Image)
+![image](https://github.com/Akmal2205/Algeo02-22009/assets/118907510/ec33518a-79f2-4525-85d1-8c4b2698dff6)![image](https://github.com/Akmal2205/Algeo02-22009/assets/118907510/cb52d42d-0034-437b-b076-d957a2cf2207)# Content Based Image Retrieval (Reverse Search Image)
 > Program untuk mencari gambar dari sebuah dataset berdasarkan persentase kemiripannya melalui metode perbandingan warna dan perbandingan tekstur.
 
 ## Table of Contents
@@ -52,10 +52,37 @@ Fitur per Page:
 
 
 ## Usage
-1. git clone https://github.com/Akmal2205/Algeo02-22009
-2. Buka folder tersebut dalam vscode (buka terminal di folder lalu ketik 'code . '.
-3. Lalu buka terminal baru dengan 'ctrl + shift + ~' , lalu ketik 'cd Backend', lalu ketik 'cd project', lalu ketik 'pip install django --user', lalu ketik 'python manage.py runserver'.
-4. Lalu buka terminal baru lagi, lalu ketik 'cd FEALGEO', lalu ketik 'npm i', lalu ketik 'npm create vite@latest', lalu ketik 'npm run dev', akan muncul sebuah link local host yang dapat dibuka di browser.
+```shell
+git clone https://github.com/Akmal2205/Algeo02-22009
+```
+Buka folder tersebut dalam vscode atau ketik
+```shell
+code .
+```
+### Buka terminal lalu,
+```shell
+cd Backend
+```
+```shell
+cd project
+```
+```shell
+pip install django
+```
+```shell
+python manage.py runserver
+```
+### Buka terminal baru lalu,
+```shell
+cd FEALGEO
+```
+```shell
+npm create vite@latest
+```
+```shell
+npm run dev
+```
+### Akan muncul link local host yang dapat dibuka di browser.
 
 
 ## Project Status
