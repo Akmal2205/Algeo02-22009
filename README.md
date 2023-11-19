@@ -38,9 +38,10 @@ List the ready features here:
 
 ## Screenshots
 ### Color Results
+![Screenshot 2023-11-19 215612](https://github.com/Akmal2205/Algeo02-22009/assets/118907510/c57d875b-69f6-4082-a140-fb5e7d47f6ed)
 ![Screenshot 2023-11-19 122149](https://github.com/Akmal2205/Algeo02-22009/assets/118907510/93008701-e7c3-44b0-b825-75ad19f71b60)
 ![Screenshot 2023-11-19 122202](https://github.com/Akmal2205/Algeo02-22009/assets/118907510/37b2f910-0b76-43c0-82d0-15d39a0e974c)
-
+### Texture Results
 <!-- If you have screenshots you'd like to share, include them here. -->
 
 
